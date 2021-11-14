@@ -14,7 +14,7 @@
 
 	<script src="../assets/js/app.js"></script>
 	<script src="../assets/js/app.js.map"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="../assets/js/jquery-3.6.0.js"></script>
 	<script src="../assets/js/custom.js"></script>
 </body>
 

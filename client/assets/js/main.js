@@ -6,7 +6,7 @@ document.querySelector('#search-btn').onclick = () => {
     cart.classList.remove('active');
     loginForm.classList.remove('active');
     navbar.classList.remove('active');
-    aboutProduct.classList.remove('active');
+    // aboutProduct.classList.remove('active');
     registerForm.classList.remove('active');
 }
 
@@ -19,7 +19,7 @@ document.querySelector('#cart-btn').onclick = () => {
     searchForm.classList.remove('active');
     loginForm.classList.remove('active');
     navbar.classList.remove('active');
-    aboutProduct.classList.remove('active');
+    // aboutProduct.classList.remove('active');
     registerForm.classList.remove('active');
 }
 
@@ -32,7 +32,7 @@ document.querySelector('#login-btn').onclick = () => {
     searchForm.classList.remove('active');
     cart.classList.remove('active');
     navbar.classList.remove('active');
-    aboutProduct.classList.remove('active');
+    // aboutProduct.classList.remove('active');
     registerForm.classList.remove('active');
 }
 
@@ -83,6 +83,7 @@ $('#register').click(function() {
 
 //Add cart
 function addCart(mshh, slHang) {
+
     $.ajax({
         type: "post",
         url: "./control/Cart_Controller.php",
@@ -94,17 +95,6 @@ function addCart(mshh, slHang) {
         success: function(result) {
             alert("Thêm vào giỏ hàng thành công!");
             $('#showCart').html(result);
-        } 
-    });
-    // tinh tong tien
-    $.ajax({
-        type: "post",
-        url: "./control/Cart_Controller.php",
-        data: {
-            total: true, 
-        },
-        success: function(result) {
-            $('#value-total').html(result);
         } 
     });
 }
@@ -122,47 +112,6 @@ function deleteCart(mshh) {
             $('#showCart').html(result);
         } 
     });
-    // tinh tong tien
-    $.ajax({
-        type: "post",
-        url: "./control/Cart_Controller.php",
-        data: {
-            total: true, 
-        },
-        success: function(result) {
-            $('#value-total').html(result);
-        } 
-    });
-}
-
-//edit so luong trong cart
-function editSL(mshh, newSL) {
-    // if(newSL > maxSL){
-    //     newSL = maxSL;
-    // }
-    $.ajax({
-        type: "post",
-        url: "./control/Cart_Controller.php",
-        data: {
-            mshh: mshh,
-            newSL: newSL,
-            editSL: true, 
-        },
-        success: function(result) {
-            $('#showCart').html(result);
-        } 
-    });
-    // tinh tong tien
-    $.ajax({
-        type: "post",
-        url: "./control/Cart_Controller.php",
-        data: {
-            total: true, 
-        },
-        success: function(result) {
-            $('#value-total').html(result);
-        } 
-    });
 }
 
 $.ajax({
@@ -176,3 +125,44 @@ $.ajax({
     } 
 });
 
+function minusProduct(mshh) {
+    var slmua = $('#sl_product_cart'+mshh).val();
+    
+    if (slmua >1){
+        slmua--;
+        $('#sl_product_cart'+mshh).val(slmua);
+        $.ajax({
+            type: "post",
+            url: "./control/Cart_Controller.php",
+            data: {
+                mshh: mshh,
+                newSL: slmua,
+                editSL: true, 
+            },
+            success: function(result) {
+                $('#showCart').html(result);
+            } 
+        });
+    }
+}
+
+function plusProduct(mshh, max_sl){
+    let slmua = $('#sl_product_cart'+mshh).val();
+    
+    if (slmua < max_sl){
+        slmua++;
+        $('#sl_product_cart'+mshh).val(slmua);
+        $.ajax({
+            type: "post",
+            url: "./control/Cart_Controller.php",
+            data: {
+                mshh: mshh,
+                newSL: slmua,
+                editSL: true, 
+            },
+            success: function(result) {
+                $('#showCart').html(result);
+            } 
+        });
+    } 
+}

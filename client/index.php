@@ -88,7 +88,7 @@
     <section class="shopping-cart-container">
         <div class="cart-container">
             <h3 class="cart-title title">Your products</h3>
-
+            <p id="tessttttt"> </p>
             <div class="box-container bd-grid" id="showCart">
                 <?php
                     if(isset($_SESSION['cartStore'])):
@@ -102,7 +102,11 @@
                                 <div class="box-content">
                                     <h3 class="box-title"><?=$items['TenHH']?></h3> 
                                     <span class="box-span">quantity :</span>
-                                    <input type="number" value="<?=$items['SoLuongMua']?>" onchange="editSL(<?=$items['MSHH']?>,this.value)" min="1" max="<?=$items['SoLuongHang']?>" class="box-input">
+                                    <div class="buttons_added">
+                                        <input class="minus is-form" type="button" value="-" onclick="minusProduct(<?=$items['MSHH']?>)">
+                                        <input aria-label="quantity" id="sl_product_cart<?=$items['MSHH']?>" readonly class="input-qty" value="<?=$items['SoLuongMua']?>" min="1" max="<?=$items['SoLuongHang']?>">
+                                        <input class="plus is-form" type="button" value="+" onclick="plusProduct(<?=$items['MSHH']?>, <?=$items['SoLuongHang']?>)">
+                                    </div>
                                     <br>
                                     <span class="box-span">price : </span>
                                     <span class="box-price"><?=number_format($items['Gia'])?>đ</span>
@@ -225,7 +229,7 @@
             <h2 class="home-title">Different cakes for the different tastes 😉</h2>
             <p class="description">The Cake là tiệm bánh Nhật Bản kế thừa những công thức tâm đắc nhất
                 của ông Tetsuya Suzuki. Năm 2005, từ xuất phát điểm là một xưởng
-                bánh bỏ hoang trên con phố Láng Hạ, đến nay, Cake đã có gần 20 của hàng
+                bánh bỏ hoang trên con phố Láng Hạ, đến nay, Cake đã có gần 20 cửa hàng
                 tại Cần Thơ. Ẩn chứa trong bất cứ chiếc bánh nhỏ bé nào tại đây, vẫn
                 là hương vị thơm ngon thuở ban đầu với tình yêu và niềm đam mê trọn vẹn!</p>
             <a href="#menu" class="btn">order now</a>
@@ -318,7 +322,7 @@
                 <img src="./img-product/<?= $row['TenHinh'] ?>" alt="" class="menu-img">
                 <h3><?= $row['TenHH'] ?></h3>
                 <span class="menu-price"><?= number_format($row['Gia']) ?>đ</span>
-                <a href="javascript:void();" onclick="addCart(<?= $row['MSHH'] ?>, <?= $row['SoLuongHang'] ?>)" class="menu-icon btn"><i class="fas fa-shopping-bag"></i></a>
+                <a href="javascript:void();" onclick="addCart(<?= $row['MSHH'] ?>, <?= $row['SoLuongHang']?>)" class="menu-icon btn"><i class="fas fa-shopping-bag"></i></a>
             </div>
             <?php endwhile; ?>
         </div>

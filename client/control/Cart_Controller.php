@@ -39,7 +39,11 @@
                 <div class="box-content">
                     <h3 class="box-title"><?=$items['TenHH']?></h3> 
                     <span class="box-span">quantity :</span>
-                    <input type="number" value="<?=$items['SoLuongMua']?>" onchange="editSL(<?=$items['MSHH']?>,this.value)" min="1" max="<?=$items['SoLuongHang']?>" class="box-input">
+                    <div class="buttons_added">
+                        <input class="minus is-form" type="button" value="-" onclick="minusProduct(<?=$items['MSHH']?>)">
+                        <input aria-label="quantity" id="sl_product_cart<?=$items['MSHH']?>" readonly class="input-qty" value="<?=$items['SoLuongMua']?>" min="1" max="<?=$items['SoLuongHang']?>">
+                        <input class="plus is-form" type="button" value="+" onclick="plusProduct(<?=$items['MSHH']?>, <?=$items['SoLuongHang']?>)">
+                    </div>
                     <br>
                     <span class="box-span">price : </span>
                     <span class="box-price"><?=number_format($items['Gia'])?></span>
@@ -47,6 +51,22 @@
             </div>
         <?php
         endforeach;
+        ?>
+            <script src="./assets/js/jquery-3.6.0.js"></script>
+            <script>
+                // tinh tong tien
+                $.ajax({
+                    type: "post",
+                    url: "./control/Cart_Controller.php",
+                    data: {
+                        total: true, 
+                    },
+                    success: function(result) {
+                        $('#value-total').html(result);
+                    } 
+                });
+            </script>
+        <?php
     }
 
     // xoa sp ra gio hang
@@ -65,7 +85,11 @@
                 <div class="box-content">
                     <h3 class="box-title"><?=$items['TenHH']?></h3> 
                     <span class="box-span">quantity :</span>
-                    <input type="number" value="<?=$items['SoLuongMua']?>" onchange="editSL(<?=$items['MSHH']?>,this.value)" min="1" max="<?=$items['SoLuongHang']?>" class="box-input">
+                    <div class="buttons_added">
+                        <input class="minus is-form" type="button" value="-" onclick="minusProduct(<?=$items['MSHH']?>)">
+                        <input aria-label="quantity" id="sl_product_cart<?=$items['MSHH']?>" readonly class="input-qty" value="<?=$items['SoLuongMua']?>" min="1" max="<?=$items['SoLuongHang']?>">
+                        <input class="plus is-form" type="button" value="+" onclick="plusProduct(<?=$items['MSHH']?>, <?=$items['SoLuongHang']?>)">
+                    </div>
                     <br>
                     <span class="box-span">price : </span>
                     <span class="box-price"><?=number_format($items['Gia'])?></span>
@@ -76,6 +100,22 @@
         if($count <1) {
             echo "<h1>Giỏ hàng rỗng!</h1>";
         }
+        ?>
+            <script src="./assets/js/jquery-3.6.0.js"></script>
+            <script>
+                // tinh tong tien
+                $.ajax({
+                    type: "post",
+                    url: "./control/Cart_Controller.php",
+                    data: {
+                        total: true, 
+                    },
+                    success: function(result) {
+                        $('#value-total').html(result);
+                    } 
+                });
+            </script>
+        <?php
     }
 
     //edit so luong sp trong gio hang
@@ -92,7 +132,11 @@
                 <div class="box-content">
                     <h3 class="box-title"><?=$items['TenHH']?></h3> 
                     <span class="box-span">quantity :</span>
-                    <input type="number" value="<?=$items['SoLuongMua']?>" onchange="editSL(<?=$items['MSHH']?>,this.value)" min="1" max="<?=$items['SoLuongHang']?>" class="box-input">
+                    <div class="buttons_added">
+                        <input class="minus is-form" type="button" value="-" onclick="minusProduct(<?=$items['MSHH']?>)">
+                        <input aria-label="quantity" id="sl_product_cart<?=$items['MSHH']?>" readonly class="input-qty" value="<?=$items['SoLuongMua']?>" min="1" max="<?=$items['SoLuongHang']?>">
+                        <input class="plus is-form" type="button" value="+" onclick="plusProduct(<?=$items['MSHH']?>, <?=$items['SoLuongHang']?>)">
+                    </div>
                     <br>
                     <span class="box-span">price : </span>
                     <span class="box-price"><?=number_format($items['Gia'])?></span>
@@ -100,6 +144,22 @@
             </div>
         <?php
         endforeach;
+        ?>
+            <script src="./assets/js/jquery-3.6.0.js"></script>
+            <script>
+                // tinh tong tien
+                $.ajax({
+                    type: "post",
+                    url: "./control/Cart_Controller.php",
+                    data: {
+                        total: true, 
+                    },
+                    success: function(result) {
+                        $('#value-total').html(result);
+                    } 
+                });
+            </script>
+        <?php
     }
 
     // tinh tong tien
