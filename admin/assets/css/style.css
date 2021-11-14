@@ -1,0 +1,60 @@
+.mota {
+    max-width: 300px;
+    max-height: 130px !important;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: break-spaces;
+}
+
+.tenhh {
+    max-width: 250px;
+    max-height: 130px;
+}
+
+.thaotac {
+    width: 140px;
+}
+
+.thongbao_success {
+    color: black;
+    background-color: rgb(46, 243, 96);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.thongbao_fail {
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#addModal,
+#addModal-type { 
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh; 
+    background-image: linear-gradient(to right top, #b8e9c4, #7ef17e);
+    overflow: auto;
+    display: none;
+    z-index: 1; 
+}
+
+.edit_product_BG,
+.edit-productType,
+.edit_staff {
+    background-image: linear-gradient(to right top, #b8e9c4, #7ef17e);
+}
