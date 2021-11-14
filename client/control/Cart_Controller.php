@@ -25,9 +25,17 @@
                         );
         //kiem tra xem co sp trong gio hang chua
         if(isset($_SESSION['cartStore'][$mshh])) {
-            $_SESSION['cartStore'][$mshh]['SoLuongMua']++;
+            $slMua = $_SESSION['cartStore'][$mshh]['SoLuongMua'];
+            //Nhỏ hơn số lượng trong kho thì mới thêm
+            if($slMua < $slHang){
+                $_SESSION['cartStore'][$mshh]['SoLuongMua']++;
+                alert("Thêm vào giỏ hàng thành công!");
+            }else{
+                alert("Số lượng trong giỏ hàng đạt tối đa");
+            }
         } else {
-            $_SESSION['cartStore'][$mshh] = $product; 
+            $_SESSION['cartStore'][$mshh] = $product;
+            alert("Thêm vào giỏ hàng thành công!"); 
         }
 
         //in gio hang hoa 
@@ -166,9 +174,11 @@
     if(isset($_POST['total'])) {
         $tong = 0;
 
-        foreach($_SESSION['cartStore'] as $items):
-            $tong += $items['Gia']*$items['SoLuongMua']; 
-        endforeach;
+        if(isset($_SESSION['cartStore'])) {
+            foreach($_SESSION['cartStore'] as $items):
+                $tong += $items['Gia']*$items['SoLuongMua']; 
+            endforeach;
+        }
 
         echo number_format($tong)."đ" ; 
     }

@@ -68,7 +68,7 @@
             
             <!-- <a href="control/logout.php" class="fas fa-power-off nav-icon-item"></a> -->
             <?php else: ?>
-                <div id="login-btn" class="fas fa-user nav-icon-item"></div>
+                <div id="login-btn" class="fas fa-sign-in-alt nav-icon-item"></div>
             <?php endif; ?>
                 <div id="login-btn" style="display: none;"></div>
             
@@ -138,7 +138,7 @@
                         $tenkh = $row['HoTenKH'];
                         $sdt = $row['SoDienThoai'];
                 ?>
-                <form action="./control/xuly_order.php" id="order-form" method="post">
+                <form action="./control/Order_Controller.php" id="order-form" method="post">
                     <h3 class="total">Thông tin khách hàng</h3>
                     <table>
                         <tr>
@@ -155,7 +155,7 @@
                             <td>Địa chỉ giao hàng</td>
                             <td>:</td>
                             <td>
-                                <select name="diachiGH" id="" class="form-control">
+                                <select name="diachiGH_cu" id="old_address" class="form-control">
                                     <?php
                                         $diachikh = $conn->query("SELECT * FROM diachikh WHERE MSKH='$id_kh'");
                                         while($row = $diachikh->fetch_assoc()){
@@ -163,6 +163,10 @@
                                         }
                                     ?>
                                 </select>
+                                <input type="text" name="diachiGH_moi" id="new_address" placeholder="Nhập địa chỉ mới...">
+
+                                <a class="toggle_address" id="toggle_newaddress"><i class='fa fa-sync-alt'></i> Địa chỉ mới</a>
+                                <a class="toggle_address" id="toggle_oldaddress"><i class='fa fa-sync-alt'></i> Chọn địa chỉ sãn có</a>
                             </td>
                         </tr>
                     </table>
@@ -172,8 +176,11 @@
 
             <div class="cart-box box">
                 <h3 class="total">Tổng tiền : <span id="value-total"></span></h3>
-
-                <button type="submit" name="submit_order" form="order-form" class="btn">Đặt hàng</button>
+                <?php if(isset($_COOKIE['login_kh'])): ?>
+                    <button type="submit" name="submit_order" form="order-form" class="btn">Đặt hàng</button>
+                <?php else: ?>
+                    <button onclick="dathang_login()" class="btn">Đặt hàng</button>
+                <?php endif;?>
             </div>
         </div>
     </section>
@@ -287,7 +294,7 @@
             <?php while ($row = $result_hh->fetch_assoc()): ?>
             <div class="popular-box">
                 <div class="popular-image">
-                    <img src="./img-product/<?= $row['TenHinh'] ?>" alt="" class="popular-img">
+                    <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>)" alt="" class="popular-img">
                 </div>
 
                 <div class="popular-content">
@@ -319,7 +326,7 @@
         <div class="menu-container bd-grid">
             <?php while ($row = $result_hh->fetch_assoc()): ?>
             <div class="menu-content">
-                <img src="./img-product/<?= $row['TenHinh'] ?>" alt="" class="menu-img">
+                <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>)" alt="" class="menu-img">
                 <h3><?= $row['TenHH'] ?></h3>
                 <span class="menu-price"><?= number_format($row['Gia']) ?>đ</span>
                 <a href="javascript:void();" onclick="addCart(<?= $row['MSHH'] ?>, <?= $row['SoLuongHang']?>)" class="menu-icon btn"><i class="fas fa-shopping-bag"></i></a>
@@ -346,17 +353,21 @@
         <h3 class="mixin-font about-product-title">About product</h3>
         <i class="fas fa-times product-icon" id="product-icon"></i>
 
-        <div class="about-product-container">
+        <div class="about-product-container" id="show_detail_product">
             <div class="product-image">
                 <img src="./assets/img/Chocolate Macaroon.jfif" alt="" class="product-img">
             </div>
 
             <div class="product-content">
-                <h3>Chocolate Macaroon</h3>
-                <span class="product-price">350.000đ</span>
-                <p class="product-description">Những chiếc bánh macaroon mini bé bé xinh xinh ngọt ngào.</p>
+                <h3>Tên sản phâm</h3>
+                <span class="product-price">Giá</span>
+                <p class="product-description">Những dòng mô tả về sản phẩm một cách chân thật nhất đề khách hàng yên tâm chọn lựa một cách đúng đắn và tự tin nhất...</p>
                 <br>
-                <a href="#" class="btn">Add to cart</a>
+                <div id="quantity_product">
+                    Số lượng còn lại: 
+                </div>
+                <br>
+                <a href="javascript:void();" onclick="addCart(<?= $row['MSHH']?>, <?= $row['SoLuongHang']?>)" class="btn">Add to cart</a>
             </div>
         </div>
     </section>
@@ -392,5 +403,9 @@
 <?php
     if(isset($_COOKIE['thongbao_registerkh'])){
         alert($_COOKIE['thongbao_registerkh']);
+    }
+
+    if(isset($_COOKIE['noti_order'])){
+        alert($_COOKIE['noti_order']);
     }
 ?>

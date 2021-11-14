@@ -54,8 +54,9 @@ window.onscroll = () => {
     navbar.classList.remove('active');
 }
 
-// about product
-// let aboutProduct = document.querySelector('.about-product');
+$('#user-drop').on("click", function(){
+    $('.user-dropdown-content').toggle("show");
+});
 
 $('.menu-img').each(function(){
     $(this).click(function(){
@@ -93,7 +94,6 @@ function addCart(mshh, slHang) {
             addCart: true,  
         },
         success: function(result) {
-            alert("Thêm vào giỏ hàng thành công!");
             $('#showCart').html(result);
         } 
     });
@@ -165,4 +165,52 @@ function plusProduct(mshh, max_sl){
             } 
         });
     } 
+}
+
+//Chọn nhập địa chỉ mới
+$('#toggle_newaddress').on("click", function(){
+    //Bật tắt thẻ select và input
+    $('#old_address').css({"display": "none"});
+    $('#new_address').css({"display": "inline-block"});
+
+    //gán disabled cho thẻ
+    $('#old_address').attr("disabled", true);//disabled địa chỉ cũ
+    $('#new_address').attr("disabled", false);//mở địa chỉ mới
+    $('#new_address').attr("required", true);//Bắt buộc nhập
+
+    //Nút chuyển đổi
+    $('#toggle_newaddress').css({"display":"none"});
+    $('#toggle_oldaddress').css({"display":"inline"});
+});
+//Chọn địa chỉ củ
+$('#toggle_oldaddress').on("click", function(){
+    //Bật tắt thẻ select và input
+    $('#old_address').css({"display": "inline-block"});
+    $('#new_address').css({"display": "none"});
+    
+    //gán disabled cho thẻ
+    $('#old_address').attr("disabled", false);//mởf địa chỉ cũ
+    $('#new_address').attr("disabled", true);//disabled địa chỉ mới
+
+    //Nút chuyển đổi
+    $('#toggle_newaddress').css({"display":"inline"});
+    $('#toggle_oldaddress').css({"display":"none"});
+});
+
+//Detail Product
+function showDetail(mshh){
+    $.ajax({
+        type: "post",
+        url: "./control/Detail_Controller.php",
+        data: {
+            mshh: mshh, 
+        },
+        success: function(result) {
+            $('#show_detail_product').html(result);
+        } 
+    });
+}
+
+function dathang_login(){
+    alert("Hãy đăng nhập để đặt hàng!");
 }
