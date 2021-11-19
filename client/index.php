@@ -302,7 +302,7 @@
             <?php while ($row = $result_hh->fetch_assoc()): ?>
             <div class="popular-box">
                 <div class="popular-image">
-                    <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>)" alt="" class="popular-img">
+                    <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>);" alt="" class="popular-img">
                 </div>
 
                 <div class="popular-content">
@@ -325,16 +325,16 @@
         </div>
 
         <?php 
-            $result_hh = $conn->query("SELECT * 
-                                       FROM hanghoa, hinhhanghoa 
-                                       WHERE hanghoa.MSHH = hinhhanghoa.MSHH
-                                       ORDER BY hanghoa.MSHH DESC");
+            $result_hh = $conn->query("SELECT a.*, b.TenHinh
+                                       FROM hanghoa AS a, hinhhanghoa AS b
+                                       WHERE a.MSHH = b.MSHH
+                                       ORDER BY a.MSHH DESC");
         ?>
 
         <div class="menu-container bd-grid">
             <?php while ($row = $result_hh->fetch_assoc()): ?>
             <div class="menu-content">
-                <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>)" alt="" class="menu-img">
+                <img src="./img-product/<?= $row['TenHinh'] ?>" onclick="showDetail(<?=$row['MSHH']?>);" alt="" class="menu-img">
                 <h3><?= $row['TenHH'] ?></h3>
                 <span class="menu-price"><?= number_format($row['Gia']) ?>đ</span>
                 <a href="javascript:void();" onclick="addCart(<?= $row['MSHH'] ?>, <?= $row['SoLuongHang']?>)" class="menu-icon btn"><i class="fas fa-shopping-bag"></i></a>
@@ -352,7 +352,7 @@
 
         <div class="about-product-container" id="show_detail_product">
             <div class="product-image">
-                <img src="./assets/img/Chocolate Macaroon.jfif" alt="" class="product-img">
+                <img src="./assets/img/cake.png" alt="" class="product-img">
             </div>
 
             <div class="product-content">

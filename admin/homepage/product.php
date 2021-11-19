@@ -132,7 +132,22 @@
 								<h5 class="card-title mb-0">Hình HH</h5>
 							</div>
 							<div class="card-body">
-								<input type="file" name="hinhHH" id="hinhHH" required>
+								<input type="file" name="hinhHH" id="hinhHH" onchange="readURL(this)" required>
+								<img src="../../client/img-product/<?=$hinh?>" width="100px" id="hinh_demo" alt="">
+
+								<script>
+									function readURL(input) {
+										if (input.files && input.files[0]) {
+											var reader = new FileReader();
+											reader.onload = function (e) {
+												$('#hinh_demo')
+													.attr('src', e.target.result);
+											};
+
+											reader.readAsDataURL(input.files[0]);
+										}
+									}
+								</script>
 							</div>
 						</div>
                 	</div>

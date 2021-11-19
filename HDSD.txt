@@ -3,5 +3,10 @@ Tài khoản bên client:
 123
 
 Tài khoản bên admin:
+*Admin
+admin
+123456
+
+*Nhân viên
 0387473591
 123

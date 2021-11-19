@@ -59,21 +59,29 @@ $('#user-drop').on("click", function(){
 });
 
 // show chi tiết
-$('.menu-img').each(function(){
-    $(this).click(function(){
-        $('.about-product').toggleClass('active');
-    });
-});
+// $('.menu-img').each(function(){
+//     $(this).click(function(){
+//         $('.about-product').toggleClass('active');
+//     });
+// });
 
-$('.popular-img').each(function() {
-    $(this).click(function() {
-        $('.about-product').toggleClass('active');
-    });
-});
+// $('.popular-img').each(function() {
+//     $(this).click(function() {
+//         $('.about-product').toggleClass('active');
+//     });
+// });
+
+// $('.search-img').each(function(){
+//     $(this).click(function(){
+//         $('.about-product').toggleClass('active');
+//     });
+// });
 
 $('#product-icon').click(function(){
     $('.about-product').toggleClass('active');
 });
+
+
 
 //register form
 let registerForm = document.querySelector('.register-form-container');
