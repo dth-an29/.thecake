@@ -58,6 +58,7 @@ $('#user-drop').on("click", function(){
     $('.user-dropdown-content').toggle("show");
 });
 
+// show chi tiết
 $('.menu-img').each(function(){
     $(this).click(function(){
         $('.about-product').toggleClass('active');
@@ -199,9 +200,10 @@ $('#toggle_oldaddress').on("click", function(){
 
 //Detail Product
 function showDetail(mshh){
+    $('.about-product').toggleClass('active');
     $.ajax({
         type: "post",
-        url: "./control/Detail_Controller.php",
+        url: "./control/Product_Controller.php",
         data: {
             mshh: mshh, 
         },
@@ -213,4 +215,25 @@ function showDetail(mshh){
 
 function dathang_login(){
     alert("Hãy đăng nhập để đặt hàng!");
+}
+
+// tìm kím hàng hóa
+function search() {
+    var keyword = $('#search-box').val();
+    if (keyword.length < 1) {
+        $('#search-box').attr("placeholder","Nhập vào từ khóa để tìm kiếm");
+    }
+    else {
+        $.ajax({
+            type: "post",
+            url: "./control/Search_Controller.php",
+            data: {
+                keyword: keyword, 
+            },
+            success: function(result) {
+                $('#showSearch').html(result);
+            } 
+        });
+    }
+    return false;
 }

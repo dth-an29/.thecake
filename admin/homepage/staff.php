@@ -1,4 +1,8 @@
 <?php 
+
+if($_COOKIE['login_nv'] != 1) {
+	header('Location: ./');
+}
 	require_once('../../database/config.php');
 	include('../header_master.php');
 ?>
@@ -43,7 +47,7 @@
 						</thead>
 						<tbody>
 							<?php  
-								$result_nv = $conn->query("SELECT * FROM nhanvien");
+								$result_nv = $conn->query("SELECT * FROM nhanvien WHERE MSNV<>1");
 								while($row = $result_nv->fetch_assoc()):
 								$manv = $row['MSNV'];
 							?>

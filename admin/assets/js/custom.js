@@ -45,7 +45,6 @@ $('#register_staff #sdt').on('change', function() {
             $('#check_sdt').html(result);
         }
     });
-    
 });
 
 $('#register_staff').submit(function() {

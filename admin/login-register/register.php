@@ -60,7 +60,7 @@
 											<input class="form-control form-control-lg" type="password" id="pass" name="pass" placeholder="Enter password" required />
 										</div>
 										<div class="mb-3">
-											<label class="form-label">Xác nhân mật khẩu</label>
+											<label class="form-label">Xác nhận mật khẩu</label>
 											<input class="form-control form-control-lg" type="password" id="repass" name="repass" placeholder="Enter confirm password" required />
 										</div>
 										<p id="error_repass" style="color:red"></p>

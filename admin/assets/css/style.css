@@ -55,6 +55,7 @@
 
 .edit_product_BG,
 .edit-productType,
-.edit_staff {
+.edit_staff,
+.order-details {
     background-image: linear-gradient(to right top, #b8e9c4, #7ef17e);
 }

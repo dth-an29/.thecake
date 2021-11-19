@@ -78,17 +78,23 @@
 
     <!-- search form section -->
     <section class="search-form-container">
-        <form class="search-form" action="">
+        <form class="search-form" onsubmit="return search();">
             <input type="search" name="" placeholder="Search here..." id="search-box">
-            <label for="search-box" class="fas fa-search label-search"></label>
+            <button for="search-box" class="fas fa-search label-search" type="submit"></button>
         </form>
+
+        <div class="cart-container">
+            <h3 class="cart-title title">Result</h3>
+            <div class="box-container bd-grid" id="showSearch">
+                <!-- Nội dung search -->
+            </div>
+        </div>
     </section>
 
     <!-- shopping-cart section -->
     <section class="shopping-cart-container">
         <div class="cart-container">
             <h3 class="cart-title title">Your products</h3>
-            <p id="tessttttt"> </p>
             <div class="box-container bd-grid" id="showCart">
                 <?php
                     if(isset($_SESSION['cartStore'])):
@@ -207,7 +213,7 @@
 
     <!-- register form start -->
     <section class="register-form-container" id="register-form">
-        <form action="control/Register_Controller.php" class="register-form" method="post">
+        <form action="control/Register_Controller.php" class="register-form" method="post" onsubmit="return checkRegister();">
             <h3 class="title">Register Form</h3>
             <h3 class="register-description">The first step to becoming a member of The Cake</h3>
 
@@ -217,6 +223,7 @@
             <input type="tel" name="sdt" placeholder="Enter your phone number" id="user-num" class="register-box" required>
             <input type="tel" name="so-fax" placeholder="Enter your fax number" id="user-fax" class="register-box">
             <input type="password" name="matkhau" placeholder="Enter your password" id="user-pass" class="register-box" required>
+            <input type="password" name="" placeholder="Enter your password to confirm" id="user-repass" class="register-box" required>
 
 
             <input type="submit" value="register now" class="register-btn btn">
@@ -336,17 +343,6 @@
     </section>
     <!-- menu section end -->
 
-    <!-- pagination -->
-    <div class="pagination p1">
-        <ul>
-            <a href="#" onclick="return false"><li><</li></a>
-            <a class="is-active" onclick="return false" href="#"><li>1</li></a>
-            <a onclick="return false" href="#"><li>2</li></a>
-            <a onclick="return false" href="#"><li>3</li></a>
-            <a onclick="return false" href="#"><li>></li></a>
-        </ul>
-    </div>
-    <!-- end pagination -->
 
     <!-- about product section start -->
     <section class="about-product" id="about-product">

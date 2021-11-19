@@ -8,12 +8,6 @@
     $matkhau = md5($_POST['matkhau']);
     $diachi = $_POST['diachi'];
 
-    // echo "$hoten <br>";
-    // echo "$cty <br>";
-    // echo "$sdt <br>";
-    // echo "$sofax <br>";
-    // echo "$matkhau <br>";
-    // echo "$diachi <br>";
 
     $sql_register = "INSERT INTO khachhang(HoTenKH, TenCongTy, SoDienThoai, SoFax, MatKhau) 
                     VALUES ('$hoten', '$cty', '$sdt', '$sofax', '$matkhau')";
