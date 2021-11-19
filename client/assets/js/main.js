@@ -237,3 +237,35 @@ function search() {
     }
     return false;
 }
+
+// check register
+function checkRegister() {
+    var sdt = $('#user-num').val();
+    $.ajax({
+        type: "post",
+        url: "./control/Confirm_sdt.php",
+        data: {
+            sdt: sdt, 
+        },
+        success: function(result) {
+            $('#check_sdt').html(result);
+        } 
+    });
+}
+
+$('#register_customer').submit(function(){
+    var check_submit = false;
+
+    if($('#register_customer #user-pass').val() != $('#register_customer #user-repass').val()){
+        $('#check_repass').html('&#42; Mật khẩu xác nhận chưa đúng!');
+        check_submit = false;
+    }else{
+        check_submit = true;
+    }
+    if($('#comfirm_sdt').html() == 'Số điện thoại có thể sử dụng'){
+        check_submit = true;
+    }else{
+        check_submit = false;
+    }
+    return check_submit;
+});

@@ -213,7 +213,7 @@
 
     <!-- register form start -->
     <section class="register-form-container" id="register-form">
-        <form action="control/Register_Controller.php" class="register-form" method="post" onsubmit="return checkRegister();">
+        <form action="control/Register_Controller.php" class="register-form" id="register_customer" method="post" onsubmit="return checkRegister();">
             <h3 class="title">Register Form</h3>
             <h3 class="register-description">The first step to becoming a member of The Cake</h3>
 
@@ -221,10 +221,11 @@
             <input type="tel" name="cty" placeholder="Enter your company name" id="user-comp" class="register-box">
             <input type="tel" name="diachi" placeholder="Enter your adddress" id="user-addr" class="register-box" required>
             <input type="tel" name="sdt" placeholder="Enter your phone number" id="user-num" class="register-box" required>
+            <p id="check_sdt"><p>
             <input type="tel" name="so-fax" placeholder="Enter your fax number" id="user-fax" class="register-box">
             <input type="password" name="matkhau" placeholder="Enter your password" id="user-pass" class="register-box" required>
             <input type="password" name="" placeholder="Enter your password to confirm" id="user-repass" class="register-box" required>
-
+            <p id="check_repass" style='color: red; font-size: 1.4rem;'><p>
 
             <input type="submit" value="register now" class="register-btn btn">
         </form>
