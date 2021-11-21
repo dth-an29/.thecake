@@ -262,17 +262,13 @@ function checkRegister() {
 }
 
 $('#register_customer').submit(function(){
-    var check_submit = false;
+    var check_submit = true;
 
     if($('#register_customer #user-pass').val() != $('#register_customer #user-repass').val()){
-        $('#check_repass').html('&#42; Mật khẩu xác nhận chưa đúng!');
+        $('#check_repass').html("* Mật khẩu xác nhận chưa đúng!");
         check_submit = false;
-    }else{
-        check_submit = true;
     }
-    if($('#comfirm_sdt').html() == 'Số điện thoại có thể sử dụng'){
-        check_submit = true;
-    }else{
+    if($('#comfirm_sdt').html() != 'Số điện thoại có thể sử dụng'){
         check_submit = false;
     }
     return check_submit;

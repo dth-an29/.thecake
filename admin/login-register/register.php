@@ -10,7 +10,8 @@
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="../assets/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="../../client/assets/img/cake.png" />
+
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
 
@@ -30,17 +31,17 @@
 						<div class="text-center mt-4">
 							<h1 class="h2">Get started</h1>
 							<p class="lead">
-								Start creating the best possible user experience for your customers.
+								Start creating the best possible user experience for your staff.
 							</p>
 						</div>
 
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="./register_Controller.php" method="post" id="register_staff">
+									<form action="./register_Controller.php" method="post" id="register_staff" onsubmit="return check_submit_RS()">
 										<div class="mb-3">
 											<label class="form-label">Tên</label>
-											<input class="form-control form-control-lg" type="text" id="hoten" name="hoten" placeholder="Name Staff" required />
+											<input class="form-control form-control-lg" type="text" id="hoten" name="hoten" placeholder="Enter staff name" required />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Chức vụ</label>
@@ -52,7 +53,7 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Số điện thoại</label>
-											<input class="form-control form-control-lg" type="text" id="sdt" name="sdt" maxlength="10" placeholder="Enter staff email" required />
+											<input class="form-control form-control-lg" type="text" id="sdt" name="sdt" maxlength="10" placeholder="Enter staff number phone" required />
 											<div id="check_sdt"></div>
 										</div>
 										<div class="mb-3">
@@ -65,7 +66,7 @@
 										</div>
 										<p id="error_repass" style="color:red"></p>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">Sign up</button>
+											<button type="submit" form="register_staff" class="btn btn-lg btn-primary">Sign up</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
 										</div>
 									</form>

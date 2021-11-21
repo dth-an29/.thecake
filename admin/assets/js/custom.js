@@ -47,22 +47,23 @@ $('#register_staff #sdt').on('change', function() {
     });
 });
 
-$('#register_staff').submit(function() {
-    var check_submit = false;
+function check_submit_RS() {
+    var check_submit = true;
+    var pass = $('#register_staff #pass').val();
+    var repass = $('#register_staff #repass').val();
 
-    if($('#register_staff #pass').val() != $('#register_staff #repass').val()){
-        $('#error_repass').html('Mật khẩu xác nhận chưa đúng!');
+    if(pass != repass){
+        $('#error_repass').html("* Mật khẩu xác nhận chưa đúng!");
         check_submit = false;
     }else{
-        check_submit = true;
+        $('#error_repass').html("");
     }
-    if($('#comfirm_sdt').html() == 'Số điện thoại có thể sử dụng'){
-        check_submit = true;
-    }else{
+    if($('#comfirm_sdt').html() != 'Số điện thoại có thể sử dụng'){
         check_submit = false;
     }
+    // alert(check_submit);
     return check_submit;
-});
+}
 
 
 
