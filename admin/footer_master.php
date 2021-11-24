@@ -4,7 +4,6 @@
 						<div class="col-12 text-center">
 							<p class="mb-0">
 								<a class="text-muted" href="../homepage/index.php" target="_blank"><strong>AdminCake</strong></a> &copy;
-								<a href="../../client/" class="text-muted">Trang dành cho khách hàng</a>
 							</p>
 						</div>
 					</div>

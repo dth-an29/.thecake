@@ -385,9 +385,8 @@
                 <a href="#" class="footer-social fab fa-twitter"></a>
                 <a href="#" class="footer-social fab fa-instagram"></a>
             </div>
-
+            
             <p class="footer-copy">&#169; 2021 Do Thi Hong An. All right reserved.</p>
-            <a href="../admin/">Trang dành cho admin</a>
         </div>
     </section>
     
